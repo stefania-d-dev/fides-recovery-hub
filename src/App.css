@@ -1,42 +1,77 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Custom Scrollbar per un look minimalista */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-@keyframes logo-spin {
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Transizioni di Navigazione */
+.view-transition {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.view-hidden {
+  opacity: 0;
+  transform: translateY(10px) scale(0.99);
+  filter: blur(4px);
+}
+
+.view-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Animazione "Staggered" per le card e i contenuti */
+.animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Effetto riflettente sottile per la Sidebar */
+.sidebar-premium-gradient {
+  background: linear-gradient(
+    180deg, 
+    rgba(10, 15, 29, 1) 0%, 
+    rgba(15, 23, 42, 1) 100%
+  );
+  position: relative;
 }
 
-.card {
-  padding: 2em;
+.sidebar-premium-gradient::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
 }
 
-.read-the-docs {
-  color: #888;
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
